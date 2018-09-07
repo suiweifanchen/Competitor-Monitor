@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3>Competitor Monitor</h3>
+        <h4>2018-02-09</h4>
+
+        {% if difference %}
+        <table border="1" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <th>ASIN</th>
+                <th>变动项目</th>
+                <th>变动前</th>
+                <th>当前</th>
+            </tr>
+            {% for item in difference %}
+            <tr>
+                <td align="right">{{item.asin}}</td>
+                <td align="right">{{item.key}}</td>
+                <td align="right">{{item.before}}</td>
+                <td align="right">{{item.now}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        {% endif %}
+        {% if invalid_asin %}
+        <table>
+            <tr>
+                <th>Invalid ASIN:</th>
+                {% for asin in invalid_asin %}
+                <td>{{asin}},</td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% endif %}
+    </body>
+</html>
